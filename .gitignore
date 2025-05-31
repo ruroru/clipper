@@ -12,3 +12,4 @@
 pom.xml
 pom.xml.asc
 /src/resources/map.edn
+/src/resources/map.edn.gz

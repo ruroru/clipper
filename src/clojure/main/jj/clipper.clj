@@ -2,7 +2,8 @@
   (:require [clojure.edn :as edn]
             [clojure.tools.logging :as logger]
             [clojure.java.io :as io])
-  (:import (java.io PushbackReader)
+  (:import (java.io InputStreamReader PushbackReader)
+           (java.util.zip GZIPInputStream)
            (jj IpLocationRegistry)))
 
 
@@ -11,7 +12,13 @@
 (defn locate [ip]
   (when (nil? @ip-mapper)
     (reset! ip-mapper
-            (IpLocationRegistry. (edn/read (PushbackReader. (io/reader (io/resource "map.edn")))))))
+            (-> (io/resource "map.edn.gz")
+                io/input-stream
+                (GZIPInputStream.)
+                (InputStreamReader.)
+                (PushbackReader.)
+                edn/read
+                (IpLocationRegistry.))))
 
   (when (instance? String ip)
     (if @ip-mapper

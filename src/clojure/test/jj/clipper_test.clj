@@ -32,5 +32,5 @@
             ))
 
 (deftest validate-map-edn-exists
-  (is (.exists (File. "./src/resources/map.edn"))))
+  (is (.exists (File. "./src/resources/map.edn.gz"))))
 
