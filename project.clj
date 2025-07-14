@@ -3,7 +3,7 @@
   :url "https://github.com/ruroru/clipper"
   :license {:name "EPL-2.0"
             :url  "https://www.eclipse.org/legal/epl-2.0/"}
-  :dependencies [[org.clojure/clojure "1.12.0"]
+  :dependencies [[org.clojure/clojure "1.12.1"]
                  [org.clojars.jj/iso-countries "1.2.3"]
                  [org.clojure/tools.logging "1.3.0"]]
   :java-source-paths ["src/java/main"]
