@@ -8,5 +8,4 @@ jobs:
   run-lein-tests:
     name: Lein test
     uses: ruroru/workflows/.github/workflows/lein-test.yaml@dev
-    with:
-      lein_compile_profile: "dev"
+
