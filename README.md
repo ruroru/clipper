@@ -6,7 +6,7 @@ Clipper is a dependency free geoip library for clojure
 ## Installation
 Add clipper to dependency list
 ```clojure
-[org.clojars.jj/clipper "1.0.0"]
+[org.clojars.jj/clipper "1.0.1"]
 ```
 
 ## Usage
