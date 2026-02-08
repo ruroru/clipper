@@ -1,5 +1,5 @@
 (defproject org.clojars.jj/clipper "1.0.2-SNAPSHOT"
-  :description "clipper a high-performance, zero-dependency solution for determine country of origin of a  given IP."
+  :description "clipper a high-performance, zero-dependency GeoIP solution for determine country of origin of a  given IP."
   :url "https://github.com/ruroru/clipper"
   :license {:name "EPL-2.0"
             :url  "https://www.eclipse.org/legal/epl-2.0/"}
