@@ -15,26 +15,27 @@
             plen (Integer/parseInt plen)
             n (bit-shift-left 1 (max 0 (- 24 plen)))]
         [a b c n country]))))
-(defn rle [arr]
-  (loop [i 0 res (transient [])]
+(defn rle [^objects arr]
+  (loop [i (int 0) res (transient [])]
     (if (>= i 256)
       (persistent! res)
       (let [v (aget arr i)
             end (loop [j (inc i)] (if (and (< j 256) (= (aget arr j) v)) (recur (inc j)) j))]
-        (recur end (conj! (conj! res (- end i)) v))))))
+        (recur (int end) (conj! (conj! res (- end i)) v))))))
 (defn simplify [v]
   (if (and (= 2 (count v)) (= 256 (first v))) (second v) v))
 (defn process-octet [entries]
   (let [^"[[Ljava.lang.Object;" arr (into-array (repeatedly 256 #(object-array (repeat 256 :not-assigned))))]
     (doseq [[_ b c n country] entries]
-      (loop [i 0 bb b cc c]
-        (when (and (< i n) (< bb 256))
-          (aset (aget arr bb) cc country)
+      (loop [i (long 0) bb (long b) cc (long c)]
+        (when (and (< i (long n)) (< bb 256))
+          (let [^objects row (aget arr (int bb))]
+            (aset row (int cc) country))
           (let [nc (inc cc)]
             (if (< nc 256)
               (recur (inc i) bb nc)
               (recur (inc i) (inc bb) 0))))))
-    (let [l2 (mapv (fn [b] (simplify (rle (aget arr b)))) (range 256))]
+    (let [l2 (mapv (fn [b] (simplify (rle ^objects (aget arr (int b))))) (range 256))]
       (simplify (vec (rle (object-array l2)))))))
 
 (defn create-map-edn-files []
