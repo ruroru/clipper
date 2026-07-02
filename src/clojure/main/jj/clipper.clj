@@ -25,7 +25,9 @@
 
 (defn- parse-octets [ip]
   (when ip
-    (mapv #(Integer/parseInt %) (str/split ip #"\."))))
+    (try
+      (mapv #(Integer/parseInt %) (str/split ip #"\."))
+      (catch NumberFormatException _ nil))))
 
 (defn- get-first-octet [ip]
   (when ip

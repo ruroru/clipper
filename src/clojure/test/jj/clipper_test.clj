@@ -8,6 +8,9 @@
   (are [ip expected-location]
     (= expected-location (clipper/locate ip))
     nil nil
+    "" nil
+    "not-an-ip" nil
+    "251.abc.0.0" nil
     "254.255.255.255" nil
     "250.255.255.255" :sweden
     "251.0.0.0" :sweden
