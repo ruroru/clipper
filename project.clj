@@ -11,7 +11,7 @@
   :resource-paths ["src/resources"]
 
   :profiles {:dev  {:aot          :all
-                    :dependencies [[org.clojars.jj/iso-countries "1.2.5"]
+                    :dependencies [[org.clojars.jj/iso-countries "1.2.6"]
                                    [org.clojure/data.csv "1.1.1"]]
                     :source-paths ["dev-src/clojure"]
                     }
